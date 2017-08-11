@@ -1,0 +1,2098 @@
+C:\Users\juan\drupal-vm
+ (master)
+λ vagrant provision
+==> Mastering-Drupal--8: [vagrant-hostsupdater] Checking for host entries
+==> Mastering-Drupal--8: [vagrant-hostsupdater] Writing the following entries to (C:/WINDOWS/system32/drivers/etc/hosts)
+==> Mastering-Drupal--8: [vagrant-hostsupdater]   192.168.88.25  local.Mastering-Drupal--8.com  # VAGRANT: 609627bc1c68c8562c291a0df1d48ba2 (Mastering-Drupal--8) / 818ccbcf-b2bb-4de4-942c-4d6a
+
+41226fca
+==> Mastering-Drupal--8: [vagrant-hostsupdater]   192.168.88.25  www.local.Mastering-Drupal--8.com  # VAGRANT: 609627bc1c68c8562c291a0df1d48ba2 (Mastering-Drupal--8) / 818ccbcf-b2bb-4de4-942c-
+
+4d6a41226fca
+==> Mastering-Drupal--8: [vagrant-hostsupdater]   192.168.88.25  adminer.local.Mastering-Drupal--8.com  # VAGRANT: 609627bc1c68c8562c291a0df1d48ba2 (Mastering-Drupal--8) / 818ccbcf-b2bb-4de4-9
+
+42c-4d6a41226fca
+==> Mastering-Drupal--8: [vagrant-hostsupdater]   192.168.88.25  xhprof.local.Mastering-Drupal--8.com  # VAGRANT: 609627bc1c68c8562c291a0df1d48ba2 (Mastering-Drupal--8) / 818ccbcf-b2bb-4de4-94
+
+2c-4d6a41226fca
+==> Mastering-Drupal--8: [vagrant-hostsupdater]   192.168.88.25  pimpmylog.local.Mastering-Drupal--8.com  # VAGRANT: 609627bc1c68c8562c291a0df1d48ba2 (Mastering-Drupal--8) / 818ccbcf-b2bb-4de4
+
+-942c-4d6a41226fca
+==> Mastering-Drupal--8: [vagrant-hostsupdater]   192.168.88.25  dashboard.local.Mastering-Drupal--8.com  # VAGRANT: 609627bc1c68c8562c291a0df1d48ba2 (Mastering-Drupal--8) / 818ccbcf-b2bb-4de4
+
+-942c-4d6a41226fca
+==> Mastering-Drupal--8: [vagrant-hostsupdater] This operation requires administrative access. You may skip it by manually adding equivalent entries to the hosts file.
+sh: line 5: C:/WINDOWS/system32/drivers/etc/hosts: Permission denied
+==> Mastering-Drupal--8: Running provisioner: ansible_local...
+    Mastering-Drupal--8: Running ansible-playbook...
+
+PLAY [all] *********************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [Mastering-Drupal--8]
+
+TASK [Include OS-specific variables.] ******************************************
+ok: [Mastering-Drupal--8]
+
+TASK [Define config_dir.] ******************************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [Include optional configuration files.] ***********************************
+ok: [Mastering-Drupal--8] => (item=/vagrant/config.yml)
+
+TASK [include] *****************************************************************
+included: /vagrant/provisioning/tasks/backwards-compatibility.yml for Mastering-Drupal--8
+
+TASK [nginx_hosts shim] ********************************************************
+ok: [Mastering-Drupal--8]
+
+TASK [include] *****************************************************************
+included: /vagrant/provisioning/tasks/init-Debian.yml for Mastering-Drupal--8
+
+TASK [Update apt cache if needed.] *********************************************
+ok: [Mastering-Drupal--8]
+
+TASK [Install required dependencies.] ******************************************
+ok: [Mastering-Drupal--8] => (item=[u'curl', u'python-apt', u'python-pycurl', u'sudo', u'unzip', u'make'])
+
+TASK [Add repository for Apache 2.4.9+ (Ubuntu 12/14).] ************************
+ok: [Mastering-Drupal--8]
+
+TASK [Define php_xhprof_html_dir.] *********************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [Run configured pre-provision shell scripts.] *****************************
+changed: [Mastering-Drupal--8] => (item=../examples/scripts/setup.sh)
+
+TASK [Run configured pre-provision ansible task files.] ************************
+
+TASK [Set the PHP webserver daemon correctly when nginx is in use.] ************
+skipping: [Mastering-Drupal--8]
+
+TASK [Ensure PHP version -specific workspace directory exists.] ****************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.repo-remi : Install remi repo.] ******************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.repo-remi : Import remi GPG key.] ****************************
+skipping: [Mastering-Drupal--8]
+
+TASK [drupalvm.hostname : Configure /etc/mailname (Debian).] *******************
+ok: [Mastering-Drupal--8]
+
+TASK [drupalvm.hostname : Add hostname to /etc/hosts.] *************************
+ok: [Mastering-Drupal--8]
+
+TASK [drupalvm.hostname : Configure hostname.] *********************************
+ok: [Mastering-Drupal--8]
+
+TASK [drupalvm.hostname : Set the hostname for current session.] ***************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.firewall : Ensure iptables is installed.] ********************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.firewall : Flush iptables the first time playbook runs.] *****
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.firewall : Copy firewall script into place.] *****************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.firewall : Copy firewall init script into place.] ************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.firewall : Copy firewall systemd unit file into place (for systemd systems).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.firewall : Configure the firewall service.] ******************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.firewall : Check if firewalld package is installed (on RHEL).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.firewall : Disable the firewalld service (on RHEL, if configured).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.firewall : Check if ufw package is installed (on Ubuntu).] ***
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.firewall : Disable the ufw firewall (on Ubuntu, if configured).] ***
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.firewall : Check if ufw package is installed (on Archlinux).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.firewall : Disable the ufw firewall (on Archlinux, if configured).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.git : Ensure git is installed (RedHat).] *********************
+skipping: [Mastering-Drupal--8] => (item=git)
+skipping: [Mastering-Drupal--8] => (item=git-svn)
+
+TASK [geerlingguy.git : Update apt cache (Debian).] ****************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.git : Ensure git is installed (Debian).] *********************
+ok: [Mastering-Drupal--8] => (item=[u'git', u'git-svn'])
+
+TASK [geerlingguy.git : Ensure git's dependencies are installed (RedHat).] *****
+skipping: [Mastering-Drupal--8] => (item=gettext-devel)
+skipping: [Mastering-Drupal--8] => (item=expat-devel)
+skipping: [Mastering-Drupal--8] => (item=curl-devel)
+skipping: [Mastering-Drupal--8] => (item=zlib-devel)
+skipping: [Mastering-Drupal--8] => (item=perl-devel)
+skipping: [Mastering-Drupal--8] => (item=openssl-devel)
+skipping: [Mastering-Drupal--8] => (item=subversion-perl)
+skipping: [Mastering-Drupal--8] => (item=make)
+skipping: [Mastering-Drupal--8] => (item=gcc)
+
+TASK [geerlingguy.git : Ensure git's dependencies are installed (Debian).] *****
+skipping: [Mastering-Drupal--8] => (item=[])
+
+TASK [geerlingguy.git : Get installed version] *********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.git : Force git install if the version numbers do not match] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.git : Download git.] *****************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.git : Expand git archive.] ***********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.git : Build git.] ********************************************
+skipping: [Mastering-Drupal--8] => (item=all)
+skipping: [Mastering-Drupal--8] => (item=install)
+
+TASK [geerlingguy.postfix : Ensure postfix is installed (RedHat).] *************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.postfix : Ensure postfix is installed (Debian).] *************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.postfix : Ensure postfix is started and enabled at boot.] ****
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : Include OS-specific variables.] *********************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : Include variables for Amazon Linux.] ****************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : Define apache_packages.] ****************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : include] ********************************************
+included: /vagrant/provisioning/roles/geerlingguy.apache/tasks/setup-Debian.yml for Mastering-Drupal--8
+
+TASK [geerlingguy.apache : Update apt cache.] **********************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : Ensure Apache is installed on Debian.] **************
+ok: [Mastering-Drupal--8] => (item=[u'apache2', u'apache2-utils'])
+
+TASK [geerlingguy.apache : Get installed version of Apache.] *******************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : Create apache_version variable.] ********************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : include_vars] ***************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : include_vars] ***************************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : include] ********************************************
+included: /vagrant/provisioning/roles/geerlingguy.apache/tasks/configure-Debian.yml for Mastering-Drupal--8
+
+TASK [geerlingguy.apache : Configure Apache.] **********************************
+ok: [Mastering-Drupal--8] => (item={u'regexp': u'^Listen ', u'line': u'Listen 80'})
+
+TASK [geerlingguy.apache : Enable Apache mods.] ********************************
+ok: [Mastering-Drupal--8] => (item=expires.load)
+ok: [Mastering-Drupal--8] => (item=headers.load)
+ok: [Mastering-Drupal--8] => (item=ssl.load)
+ok: [Mastering-Drupal--8] => (item=rewrite.load)
+ok: [Mastering-Drupal--8] => (item=proxy.load)
+ok: [Mastering-Drupal--8] => (item=proxy_fcgi.load)
+
+TASK [geerlingguy.apache : Disable Apache mods.] *******************************
+
+TASK [geerlingguy.apache : Check whether certificates defined in vhosts exist.] ***
+
+TASK [geerlingguy.apache : Add apache vhosts configuration.] *******************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : Add vhost symlink in sites-enabled.] ****************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : Remove default vhost in sites-enabled.] *************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : Ensure Apache has selected state and enabled on boot.] ***
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : Include OS-specific variables.] *********************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : Include variables for Amazon Linux.] ****************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : Define apache_packages.] ****************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : include] ********************************************
+included: /vagrant/provisioning/roles/geerlingguy.apache/tasks/setup-Debian.yml for Mastering-Drupal--8
+
+TASK [geerlingguy.apache : Update apt cache.] **********************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : Ensure Apache is installed on Debian.] **************
+ok: [Mastering-Drupal--8] => (item=[u'apache2', u'apache2-utils'])
+
+TASK [geerlingguy.apache : Get installed version of Apache.] *******************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : Create apache_version variable.] ********************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : include_vars] ***************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : include_vars] ***************************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : include] ********************************************
+included: /vagrant/provisioning/roles/geerlingguy.apache/tasks/configure-Debian.yml for Mastering-Drupal--8
+
+TASK [geerlingguy.apache : Configure Apache.] **********************************
+ok: [Mastering-Drupal--8] => (item={u'regexp': u'^Listen ', u'line': u'Listen 80'})
+
+TASK [geerlingguy.apache : Enable Apache mods.] ********************************
+ok: [Mastering-Drupal--8] => (item=expires.load)
+ok: [Mastering-Drupal--8] => (item=headers.load)
+ok: [Mastering-Drupal--8] => (item=ssl.load)
+ok: [Mastering-Drupal--8] => (item=rewrite.load)
+ok: [Mastering-Drupal--8] => (item=proxy.load)
+ok: [Mastering-Drupal--8] => (item=proxy_fcgi.load)
+
+TASK [geerlingguy.apache : Disable Apache mods.] *******************************
+
+TASK [geerlingguy.apache : Check whether certificates defined in vhosts exist.] ***
+
+TASK [geerlingguy.apache : Add apache vhosts configuration.] *******************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : Add vhost symlink in sites-enabled.] ****************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : Remove default vhost in sites-enabled.] *************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache : Ensure Apache has selected state and enabled on boot.] ***
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.apache-php-fpm : Enable mod_proxy_fcgi.] *********************
+ok: [Mastering-Drupal--8] => (item=proxy.load)
+ok: [Mastering-Drupal--8] => (item=proxy_fcgi.load)
+
+TASK [geerlingguy.nginx : Include OS-specific variables.] **********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Define nginx_user.] **********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Enable nginx repo.] **********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Ensure nginx is installed.] **************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Add PPA for Nginx.] **********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Ensure nginx will reinstall if the PPA was just added.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Update apt cache.] ***********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Ensure nginx is installed.] **************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Update pkg cache.] ***********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Ensure nginx is installed.] **************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Create logs directory.] ******************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Ensure nginx is installed.] **************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Create logs directory.] ******************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Ensure nginx is installed.] **************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Remove default nginx vhost config file (if configured).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Ensure nginx_vhost_path exists.] *********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Add managed vhost config files.] *********************
+skipping: [Mastering-Drupal--8] => (item={u'is_php': True, u'root': u'/var/www/Mastering-Drupal--8/docroot', u'server_name': u'local.Mastering-Drupal--8.com www.local.Mastering-Drupal--8.com'}
+
+)
+skipping: [Mastering-Drupal--8] => (item={u'is_php': True, u'root': u'/opt/adminer', u'server_name': u'adminer.local.Mastering-Drupal--8.com'})
+skipping: [Mastering-Drupal--8] => (item={u'is_php': True, u'root': u'/usr/share/php/xhprof_html', u'server_name': u'xhprof.local.Mastering-Drupal--8.com'})
+skipping: [Mastering-Drupal--8] => (item={u'is_php': True, u'root': u'/usr/share/php/pimpmylog', u'server_name': u'pimpmylog.local.Mastering-Drupal--8.com'})
+skipping: [Mastering-Drupal--8] => (item={u'is_php': True, u'root': u'/var/www/dashboard', u'server_name': u'192.168.88.25 dashboard.local.Mastering-Drupal--8.com'})
+
+TASK [geerlingguy.nginx : Remove managed vhost config files.] ******************
+skipping: [Mastering-Drupal--8] => (item={u'is_php': True, u'root': u'/var/www/Mastering-Drupal--8/docroot', u'server_name': u'local.Mastering-Drupal--8.com www.local.Mastering-Drupal--8.com'}
+
+)
+skipping: [Mastering-Drupal--8] => (item={u'is_php': True, u'root': u'/opt/adminer', u'server_name': u'adminer.local.Mastering-Drupal--8.com'})
+skipping: [Mastering-Drupal--8] => (item={u'is_php': True, u'root': u'/usr/share/php/xhprof_html', u'server_name': u'xhprof.local.Mastering-Drupal--8.com'})
+skipping: [Mastering-Drupal--8] => (item={u'is_php': True, u'root': u'/usr/share/php/pimpmylog', u'server_name': u'pimpmylog.local.Mastering-Drupal--8.com'})
+skipping: [Mastering-Drupal--8] => (item={u'is_php': True, u'root': u'/var/www/dashboard', u'server_name': u'192.168.88.25 dashboard.local.Mastering-Drupal--8.com'})
+
+TASK [geerlingguy.nginx : Remove legacy vhosts.conf file.] *********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Copy nginx configuration in place.] ******************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Ensure nginx is started and enabled to start at boot.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-versions : Include OS-specific variables.] ***************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-versions : Define PHP variables.] ************************
+ok: [Mastering-Drupal--8] => (item={'key': u'php_extension_conf_paths', 'value': u'__php_extension_conf_paths'})
+ok: [Mastering-Drupal--8] => (item={'key': u'php_fpm_daemon', 'value': u'__php_fpm_daemon'})
+ok: [Mastering-Drupal--8] => (item={'key': u'php_uploadprogress_module_path', 'value': u'__php_uploadprogress_module_path'})
+ok: [Mastering-Drupal--8] => (item={'key': u'php_xhprof_module_path', 'value': u'__php_xhprof_module_path'})
+ok: [Mastering-Drupal--8] => (item={'key': u'php_fpm_pool_conf_path', 'value': u'__php_fpm_pool_conf_path'})
+ok: [Mastering-Drupal--8] => (item={'key': u'php_conf_paths', 'value': u'__php_conf_paths'})
+ok: [Mastering-Drupal--8] => (item={'key': u'php_xdebug_module_path', 'value': u'__php_xdebug_module_path'})
+ok: [Mastering-Drupal--8] => (item={'key': u'php_pgsql_package', 'value': u'__php_pgsql_package'})
+ok: [Mastering-Drupal--8] => (item={'key': u'php_packages', 'value': u'__php_packages'})
+ok: [Mastering-Drupal--8] => (item={'key': u'php_mysql_package', 'value': u'__php_mysql_package'})
+ok: [Mastering-Drupal--8] => (item={'key': u'php_memcached_package', 'value': u'__php_memcached_package'})
+ok: [Mastering-Drupal--8] => (item={'key': u'php_fpm_conf_path', 'value': u'__php_fpm_conf_path'})
+ok: [Mastering-Drupal--8] => (item={'key': u'php_tideways_module_path', 'value': u'__php_tideways_module_path'})
+ok: [Mastering-Drupal--8] => (item={'key': u'php_redis_package', 'value': u'__php_redis_package'})
+
+TASK [geerlingguy.php-versions : include] **************************************
+included: /vagrant/provisioning/roles/geerlingguy.php-versions/tasks/setup-Debian.yml for Mastering-Drupal--8
+
+TASK [geerlingguy.php-versions : Set the correct opcache filename (Ubuntu/Debian).] ***
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-versions : Add repository for PHP versions (Ubuntu).] ****
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-versions : Add repository for PHP 5 compatibility packages (Ubuntu).] ***
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-versions : Add dependencies for PHP versions (Debian).] ***
+skipping: [Mastering-Drupal--8] => (item=[])
+
+TASK [geerlingguy.php-versions : Add Ondrej Sury's apt key (Debian).] **********
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-versions : Add Ondrej Sury's repo (Debian).] *************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-versions : Update apt caches after repo is added (Debian).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-versions : Purge PHP version packages.] ******************
+ok: [Mastering-Drupal--8] => (item=[u'php7.0', u'php7.0-apcu', u'php7.0-cli', u'php7.0-common', u'php7.0-curl', u'php7.0-dev', u'php7.0-fpm', u'php7.0-gd', u'php7.0-imap', u'php7.0-json', u'ph
+
+p7.0-mbstring', u'php7.0-mcrypt', u'php7.0-opcache', u'php7.0-sqlite3', u'php7.0-xml', u'php7.0-yaml', u'php7.1', u'php7.1-apcu', u'php7.1-cli', u'php7.1-common', u'php7.1-curl', u'php7.1-dev'
+
+, u'php7.1-fpm', u'php7.1-gd', u'php7.1-imap', u'php7.1-json', u'php7.1-mbstring', u'php7.1-mcrypt', u'php7.1-opcache', u'php7.1-sqlite3', u'php7.1-xml', u'php7.1-yaml'])
+
+TASK [geerlingguy.php-versions : Set the correct XHProf package when PHP 5.6 is used.] ***
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Include OS-specific variables.] ************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_packages.] **********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define extra php_packages.] ****************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_webserver_daemon.] **************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_conf_paths.] ********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_extension_conf_paths.] **********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_apc_conf_filename.] *************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_opcache_conf_filename (Ubuntu 16.04).] ******
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_opcache_conf_filename.] *********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_fpm_conf_path.] *****************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : include] ***********************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : include] ***********************************************
+included: /vagrant/provisioning/roles/geerlingguy.php/tasks/setup-Debian.yml for Mastering-Drupal--8
+
+TASK [geerlingguy.php : Update apt cache.] *************************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Ensure PHP packages are installed.] ********************
+ok: [Mastering-Drupal--8] => (item=[u'php5.6', u'php5.6-apcu', u'php5.6-cli', u'php5.6-common', u'php5.6-curl', u'php5.6-dev', u'php5.6-fpm', u'php5.6-gd', u'php5.6-imap', u'php5.6-json', u'ph
+
+p5.6-mbstring', u'php5.6-mcrypt', u'php5.6-opcache', u'php5.6-sqlite3', u'php5.6-xml', u'php5.6-yaml', u'php5.6-bz2', u'php5.6-imagick', u'imagemagick'])
+
+TASK [geerlingguy.php : Delete APCu configuration file if this role will provide one.] ***
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php : Delete OpCache configuration file if this role will provide one.] ***
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php : include] ***********************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : include] ***********************************************
+included: /vagrant/provisioning/roles/geerlingguy.php/tasks/configure.yml for Mastering-Drupal--8
+
+TASK [geerlingguy.php : Ensure configuration directories exist.] ***************
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php : Place PHP configuration file in place.] ****************
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli)
+
+TASK [geerlingguy.php : include] ***********************************************
+included: /vagrant/provisioning/roles/geerlingguy.php/tasks/configure-apcu.yml for Mastering-Drupal--8
+
+TASK [geerlingguy.php : Check for existing APCu config files.] *****************
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php : Remove any non-role-supplied APCu config files.] *******
+skipping: [Mastering-Drupal--8] => (item=({'_ansible_parsed': True, u'changed': False, '_ansible_no_log': False, '_ansible_item_result': True, 'item': u'/etc/php/5.6/fpm/conf.d', u'examined': 42, u'invocation': {u'module_args': {u'paths': [u'/etc/php/5.6/fpm/conf.d'], u'file_type': u'file', u'age': None, u'contains': u'extension(\\s+)?=(\\s+)?apc[u]?\\.so', u'recurse': False, u'age
+
+_stamp': u'mtime', u'patterns': [u'*'], u'get_checksum': False, u'use_regex': False, u'follow': False, u'hidden': False, u'size': None}}, u'msg': u'', u'matched': 1}, {u'uid': 0, u'woth': Fals
+
+e, u'mtime': 1502412459.461635, u'inode': 2883621, u'isgid': False, u'size': 66, u'isuid': False, u'isreg': True, u'gid': 0, u'ischr': False, u'wusr': True, u'xoth': False, u'islnk': False, u'
+
+nlink': 1, u'issock': False, u'rgrp': True, u'path': u'/etc/php/5.6/fpm/conf.d/20-apcu.ini', u'xusr': False, u'atime': 1502412461.925635, u'isdir': False, u'ctime': 1502412459.629635, u'isblk'
+
+: False, u'wgrp': False, u'xgrp': False, u'dev': 64512, u'roth': True, u'isfifo': False, u'mode': u'0644', u'rusr': True}))
+skipping: [Mastering-Drupal--8] => (item=({'_ansible_parsed': True, u'changed': False, '_ansible_no_log': False, '_ansible_item_result': True, 'item': u'/etc/php/5.6/apache2/conf.d', u'examine
+
+d': 3, u'invocation': {u'module_args': {u'paths': [u'/etc/php/5.6/apache2/conf.d'], u'file_type': u'file', u'age': None, u'contains': u'extension(\\s+)?=(\\s+)?apc[u]?\\.so', u'recurse': False
+
+, u'age_stamp': u'mtime', u'patterns': [u'*'], u'get_checksum': False, u'use_regex': False, u'follow': False, u'hidden': False, u'size': None}}, u'msg': u'', u'matched': 1}, {u'uid': 0, u'woth
+
+': False, u'mtime': 1502412460.1376352, u'inode': 2883622, u'isgid': False, u'size': 66, u'isuid': False, u'isreg': True, u'gid': 0, u'ischr': False, u'wusr': True, u'xoth': False, u'islnk': F
+
+alse, u'nlink': 1, u'issock': False, u'rgrp': True, u'path': u'/etc/php/5.6/apache2/conf.d/20-apcu.ini', u'xusr': False, u'atime': 1502412462.1336353, u'isdir': False, u'ctime': 1502412460.297
+
+635, u'isblk': False, u'wgrp': False, u'xgrp': False, u'dev': 64512, u'roth': True, u'isfifo': False, u'mode': u'0644', u'rusr': True}))
+skipping: [Mastering-Drupal--8] => (item=({'_ansible_parsed': True, u'changed': False, '_ansible_no_log': False, '_ansible_item_result': True, 'item': u'/etc/php/5.6/cli/conf.d', u'examined': 42, u'invocation': {u'module_args': {u'paths': [u'/etc/php/5.6/cli/conf.d'], u'file_type': u'file', u'age': None, u'contains': u'extension(\\s+)?=(\\s+)?apc[u]?\\.so', u'recurse': False, u'age
+
+_stamp': u'mtime', u'patterns': [u'*'], u'get_checksum': False, u'use_regex': False, u'follow': False, u'hidden': False, u'size': None}}, u'msg': u'', u'matched': 1}, {u'uid': 0, u'woth': Fals
+
+e, u'mtime': 1502412460.8056352, u'inode': 2883623, u'isgid': False, u'size': 66, u'isuid': False, u'isreg': True, u'gid': 0, u'ischr': False, u'wusr': True, u'xoth': False, u'islnk': False, u
+
+'nlink': 1, u'issock': False, u'rgrp': True, u'path': u'/etc/php/5.6/cli/conf.d/20-apcu.ini', u'xusr': False, u'atime': 1502412462.333635, u'isdir': False, u'ctime': 1502412460.9776351, u'isbl
+
+k': False, u'wgrp': False, u'xgrp': False, u'dev': 64512, u'roth': True, u'isfifo': False, u'mode': u'0644', u'rusr': True}))
+
+TASK [geerlingguy.php : Ensure APCu config file is present.] *******************
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php : Remove APCu config file if APC is disabled.] ***********
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php : include] ***********************************************
+included: /vagrant/provisioning/roles/geerlingguy.php/tasks/configure-opcache.yml for Mastering-Drupal--8
+
+TASK [geerlingguy.php : Check for existing OpCache config files.] **************
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php : Remove any non-role-supplied OpCache config files.] ****
+skipping: [Mastering-Drupal--8] => (item=({'_ansible_parsed': True, u'changed': False, '_ansible_no_log': False, '_ansible_item_result': True, 'item': u'/etc/php/5.6/fpm/conf.d', u'examined': 42, u'invocation': {u'module_args': {u'paths': [u'/etc/php/5.6/fpm/conf.d'], u'file_type': u'file', u'age': None, u'contains': u'zend_extension(\\s+)?=(\\s+)?opcache\\.so', u'recurse': False, u'age_stamp': u'mtime', u'patterns': [u'*'], u'get_checksum': False, u'use_regex': False, u'follow': False, u'hidden': False, u'size': None}}, u'msg': u'', u'matched': 1}, {u'uid': 0, u'woth':
+
+ False, u'mtime': 1502412462.9536352, u'inode': 2883624, u'isgid': False, u'size': 303, u'isuid': False, u'isreg': True, u'gid': 0, u'ischr': False, u'wusr': True, u'xoth': False, u'islnk': Fa
+
+lse, u'nlink': 1, u'issock': False, u'rgrp': True, u'path': u'/etc/php/5.6/fpm/conf.d/10-opcache.ini', u'xusr': False, u'atime': 1502412478.2896352, u'isdir': False, u'ctime': 1502412463.10963
+
+5, u'isblk': False, u'wgrp': False, u'xgrp': False, u'dev': 64512, u'roth': True, u'isfifo': False, u'mode': u'0644', u'rusr': True}))
+skipping: [Mastering-Drupal--8] => (item=({'_ansible_parsed': True, u'changed': False, '_ansible_no_log': False, '_ansible_item_result': True, 'item': u'/etc/php/5.6/apache2/conf.d', u'examine
+
+d': 3, u'invocation': {u'module_args': {u'paths': [u'/etc/php/5.6/apache2/conf.d'], u'file_type': u'file', u'age': None, u'contains': u'zend_extension(\\s+)?=(\\s+)?opcache\\.so', u'recurse': False, u'age_stamp': u'mtime', u'patterns': [u'*'], u'get_checksum': False, u'use_regex': False, u'follow': False, u'hidden': False, u'size': None}}, u'msg': u'', u'matched': 1}, {u'uid': 0, u
+
+'woth': False, u'mtime': 1502412463.6336353, u'inode': 2883625, u'isgid': False, u'size': 303, u'isuid': False, u'isreg': True, u'gid': 0, u'ischr': False, u'wusr': True, u'xoth': False, u'isl
+
+nk': False, u'nlink': 1, u'issock': False, u'rgrp': True, u'path': u'/etc/php/5.6/apache2/conf.d/10-opcache.ini', u'xusr': False, u'atime': 1502412478.5056353, u'isdir': False, u'ctime': 15024
+
+12463.7936351, u'isblk': False, u'wgrp': False, u'xgrp': False, u'dev': 64512, u'roth': True, u'isfifo': False, u'mode': u'0644', u'rusr': True}))
+skipping: [Mastering-Drupal--8] => (item=({'_ansible_parsed': True, u'changed': False, '_ansible_no_log': False, '_ansible_item_result': True, 'item': u'/etc/php/5.6/cli/conf.d', u'examined': 42, u'invocation': {u'module_args': {u'paths': [u'/etc/php/5.6/cli/conf.d'], u'file_type': u'file', u'age': None, u'contains': u'zend_extension(\\s+)?=(\\s+)?opcache\\.so', u'recurse': False, u'age_stamp': u'mtime', u'patterns': [u'*'], u'get_checksum': False, u'use_regex': False, u'follow': False, u'hidden': False, u'size': None}}, u'msg': u'', u'matched': 1}, {u'uid': 0, u'woth':
+
+ False, u'mtime': 1502412464.333635, u'inode': 2883626, u'isgid': False, u'size': 303, u'isuid': False, u'isreg': True, u'gid': 0, u'ischr': False, u'wusr': True, u'xoth': False, u'islnk': Fal
+
+se, u'nlink': 1, u'issock': False, u'rgrp': True, u'path': u'/etc/php/5.6/cli/conf.d/10-opcache.ini', u'xusr': False, u'atime': 1502412478.7176352, u'isdir': False, u'ctime': 1502412464.493635
+
+2, u'isblk': False, u'wgrp': False, u'xgrp': False, u'dev': 64512, u'roth': True, u'isfifo': False, u'mode': u'0644', u'rusr': True}))
+
+TASK [geerlingguy.php : Ensure OpCache config file is present.] ****************
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php : Remove OpCache config file if OpCache is disabled.] ****
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php : include] ***********************************************
+included: /vagrant/provisioning/roles/geerlingguy.php/tasks/configure-fpm.yml for Mastering-Drupal--8
+
+TASK [geerlingguy.php : Define php_fpm_daemon.] ********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_fpm_pool_conf_path.] ************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_fpm_pool_user.] *****************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_fpm_pool_group.] ****************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Stat php_fpm_pool_conf_path] ***************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Ensure the default pool directory exists.] *************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Ensure the default pool exists.] ***********************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Configure php-fpm pool (if enabled).] ******************
+ok: [Mastering-Drupal--8] => (item={u'regexp': u'^user.?=.+$', u'line': u'user = www-data'})
+ok: [Mastering-Drupal--8] => (item={u'regexp': u'^group.?=.+$', u'line': u'group = www-data'})
+ok: [Mastering-Drupal--8] => (item={u'regexp': u'^listen.?=.+$', u'line': u'listen = 127.0.0.1:9000'})
+ok: [Mastering-Drupal--8] => (item={u'regexp': u'^listen\\.allowed_clients.?=.+$', u'line': u'listen.allowed_clients = 127.0.0.1'})
+ok: [Mastering-Drupal--8] => (item={u'regexp': u'^pm\\.max_children.?=.+$', u'line': u'pm.max_children = 50'})
+ok: [Mastering-Drupal--8] => (item={u'regexp': u'^pm\\.start_servers.?=.+$', u'line': u'pm.start_servers = 5'})
+ok: [Mastering-Drupal--8] => (item={u'regexp': u'^pm\\.min_spare_servers.?=.+$', u'line': u'pm.min_spare_servers = 5'})
+ok: [Mastering-Drupal--8] => (item={u'regexp': u'^pm\\.max_spare_servers.?=.+$', u'line': u'pm.max_spare_servers = 5'})
+
+TASK [geerlingguy.php : Ensure php-fpm is started and enabled at boot (if configured).] ***
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Ensure php-fpm is started and enabled at boot (if configured, Debian).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Include OS-specific variables.] ************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_packages.] **********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define extra php_packages.] ****************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_webserver_daemon.] **************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_conf_paths.] ********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_extension_conf_paths.] **********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_apc_conf_filename.] *************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_opcache_conf_filename (Ubuntu 16.04).] ******
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_opcache_conf_filename.] *********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_fpm_conf_path.] *****************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : include] ***********************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : include] ***********************************************
+included: /vagrant/provisioning/roles/geerlingguy.php/tasks/setup-Debian.yml for Mastering-Drupal--8
+
+TASK [geerlingguy.php : Update apt cache.] *************************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Ensure PHP packages are installed.] ********************
+ok: [Mastering-Drupal--8] => (item=[u'php5.6', u'php5.6-apcu', u'php5.6-cli', u'php5.6-common', u'php5.6-curl', u'php5.6-dev', u'php5.6-fpm', u'php5.6-gd', u'php5.6-imap', u'php5.6-json', u'ph
+
+p5.6-mbstring', u'php5.6-mcrypt', u'php5.6-opcache', u'php5.6-sqlite3', u'php5.6-xml', u'php5.6-yaml', u'php5.6-bz2', u'php5.6-imagick', u'imagemagick', u'php5.6-bz2', u'php5.6-imagick', u'ima
+
+gemagick'])
+
+TASK [geerlingguy.php : Delete APCu configuration file if this role will provide one.] ***
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php : Delete OpCache configuration file if this role will provide one.] ***
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php : include] ***********************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : include] ***********************************************
+included: /vagrant/provisioning/roles/geerlingguy.php/tasks/configure.yml for Mastering-Drupal--8
+
+TASK [geerlingguy.php : Ensure configuration directories exist.] ***************
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php : Place PHP configuration file in place.] ****************
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli)
+
+TASK [geerlingguy.php : include] ***********************************************
+included: /vagrant/provisioning/roles/geerlingguy.php/tasks/configure-apcu.yml for Mastering-Drupal--8
+
+TASK [geerlingguy.php : Check for existing APCu config files.] *****************
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php : Remove any non-role-supplied APCu config files.] *******
+skipping: [Mastering-Drupal--8] => (item=({'_ansible_parsed': True, u'changed': False, '_ansible_no_log': False, '_ansible_item_result': True, 'item': u'/etc/php/5.6/fpm/conf.d', u'examined': 42, u'invocation': {u'module_args': {u'paths': [u'/etc/php/5.6/fpm/conf.d'], u'file_type': u'file', u'age': None, u'contains': u'extension(\\s+)?=(\\s+)?apc[u]?\\.so', u'recurse': False, u'age
+
+_stamp': u'mtime', u'patterns': [u'*'], u'get_checksum': False, u'use_regex': False, u'follow': False, u'hidden': False, u'size': None}}, u'msg': u'', u'matched': 1}, {u'uid': 0, u'woth': Fals
+
+e, u'mtime': 1502412459.461635, u'inode': 2883621, u'isgid': False, u'size': 66, u'isuid': False, u'isreg': True, u'gid': 0, u'ischr': False, u'wusr': True, u'xoth': False, u'islnk': False, u'
+
+nlink': 1, u'issock': False, u'rgrp': True, u'path': u'/etc/php/5.6/fpm/conf.d/20-apcu.ini', u'xusr': False, u'atime': 1502412461.925635, u'isdir': False, u'ctime': 1502412459.629635, u'isblk'
+
+: False, u'wgrp': False, u'xgrp': False, u'dev': 64512, u'roth': True, u'isfifo': False, u'mode': u'0644', u'rusr': True}))
+skipping: [Mastering-Drupal--8] => (item=({'_ansible_parsed': True, u'changed': False, '_ansible_no_log': False, '_ansible_item_result': True, 'item': u'/etc/php/5.6/apache2/conf.d', u'examine
+
+d': 3, u'invocation': {u'module_args': {u'paths': [u'/etc/php/5.6/apache2/conf.d'], u'file_type': u'file', u'age': None, u'contains': u'extension(\\s+)?=(\\s+)?apc[u]?\\.so', u'recurse': False
+
+, u'age_stamp': u'mtime', u'patterns': [u'*'], u'get_checksum': False, u'use_regex': False, u'follow': False, u'hidden': False, u'size': None}}, u'msg': u'', u'matched': 1}, {u'uid': 0, u'woth
+
+': False, u'mtime': 1502412460.1376352, u'inode': 2883622, u'isgid': False, u'size': 66, u'isuid': False, u'isreg': True, u'gid': 0, u'ischr': False, u'wusr': True, u'xoth': False, u'islnk': F
+
+alse, u'nlink': 1, u'issock': False, u'rgrp': True, u'path': u'/etc/php/5.6/apache2/conf.d/20-apcu.ini', u'xusr': False, u'atime': 1502412462.1336353, u'isdir': False, u'ctime': 1502412460.297
+
+635, u'isblk': False, u'wgrp': False, u'xgrp': False, u'dev': 64512, u'roth': True, u'isfifo': False, u'mode': u'0644', u'rusr': True}))
+skipping: [Mastering-Drupal--8] => (item=({'_ansible_parsed': True, u'changed': False, '_ansible_no_log': False, '_ansible_item_result': True, 'item': u'/etc/php/5.6/cli/conf.d', u'examined': 42, u'invocation': {u'module_args': {u'paths': [u'/etc/php/5.6/cli/conf.d'], u'file_type': u'file', u'age': None, u'contains': u'extension(\\s+)?=(\\s+)?apc[u]?\\.so', u'recurse': False, u'age
+
+_stamp': u'mtime', u'patterns': [u'*'], u'get_checksum': False, u'use_regex': False, u'follow': False, u'hidden': False, u'size': None}}, u'msg': u'', u'matched': 1}, {u'uid': 0, u'woth': Fals
+
+e, u'mtime': 1502412460.8056352, u'inode': 2883623, u'isgid': False, u'size': 66, u'isuid': False, u'isreg': True, u'gid': 0, u'ischr': False, u'wusr': True, u'xoth': False, u'islnk': False, u
+
+'nlink': 1, u'issock': False, u'rgrp': True, u'path': u'/etc/php/5.6/cli/conf.d/20-apcu.ini', u'xusr': False, u'atime': 1502412462.333635, u'isdir': False, u'ctime': 1502412460.9776351, u'isbl
+
+k': False, u'wgrp': False, u'xgrp': False, u'dev': 64512, u'roth': True, u'isfifo': False, u'mode': u'0644', u'rusr': True}))
+
+TASK [geerlingguy.php : Ensure APCu config file is present.] *******************
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php : Remove APCu config file if APC is disabled.] ***********
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php : include] ***********************************************
+included: /vagrant/provisioning/roles/geerlingguy.php/tasks/configure-opcache.yml for Mastering-Drupal--8
+
+TASK [geerlingguy.php : Check for existing OpCache config files.] **************
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php : Remove any non-role-supplied OpCache config files.] ****
+skipping: [Mastering-Drupal--8] => (item=({'_ansible_parsed': True, u'changed': False, '_ansible_no_log': False, '_ansible_item_result': True, 'item': u'/etc/php/5.6/fpm/conf.d', u'examined': 42, u'invocation': {u'module_args': {u'paths': [u'/etc/php/5.6/fpm/conf.d'], u'file_type': u'file', u'age': None, u'contains': u'zend_extension(\\s+)?=(\\s+)?opcache\\.so', u'recurse': False, u'age_stamp': u'mtime', u'patterns': [u'*'], u'get_checksum': False, u'use_regex': False, u'follow': False, u'hidden': False, u'size': None}}, u'msg': u'', u'matched': 1}, {u'uid': 0, u'woth':
+
+ False, u'mtime': 1502412462.9536352, u'inode': 2883624, u'isgid': False, u'size': 303, u'isuid': False, u'isreg': True, u'gid': 0, u'ischr': False, u'wusr': True, u'xoth': False, u'islnk': Fa
+
+lse, u'nlink': 1, u'issock': False, u'rgrp': True, u'path': u'/etc/php/5.6/fpm/conf.d/10-opcache.ini', u'xusr': False, u'atime': 1502412478.2896352, u'isdir': False, u'ctime': 1502412463.10963
+
+5, u'isblk': False, u'wgrp': False, u'xgrp': False, u'dev': 64512, u'roth': True, u'isfifo': False, u'mode': u'0644', u'rusr': True}))
+skipping: [Mastering-Drupal--8] => (item=({'_ansible_parsed': True, u'changed': False, '_ansible_no_log': False, '_ansible_item_result': True, 'item': u'/etc/php/5.6/apache2/conf.d', u'examine
+
+d': 3, u'invocation': {u'module_args': {u'paths': [u'/etc/php/5.6/apache2/conf.d'], u'file_type': u'file', u'age': None, u'contains': u'zend_extension(\\s+)?=(\\s+)?opcache\\.so', u'recurse': False, u'age_stamp': u'mtime', u'patterns': [u'*'], u'get_checksum': False, u'use_regex': False, u'follow': False, u'hidden': False, u'size': None}}, u'msg': u'', u'matched': 1}, {u'uid': 0, u
+
+'woth': False, u'mtime': 1502412463.6336353, u'inode': 2883625, u'isgid': False, u'size': 303, u'isuid': False, u'isreg': True, u'gid': 0, u'ischr': False, u'wusr': True, u'xoth': False, u'isl
+
+nk': False, u'nlink': 1, u'issock': False, u'rgrp': True, u'path': u'/etc/php/5.6/apache2/conf.d/10-opcache.ini', u'xusr': False, u'atime': 1502412478.5056353, u'isdir': False, u'ctime': 15024
+
+12463.7936351, u'isblk': False, u'wgrp': False, u'xgrp': False, u'dev': 64512, u'roth': True, u'isfifo': False, u'mode': u'0644', u'rusr': True}))
+skipping: [Mastering-Drupal--8] => (item=({'_ansible_parsed': True, u'changed': False, '_ansible_no_log': False, '_ansible_item_result': True, 'item': u'/etc/php/5.6/cli/conf.d', u'examined': 42, u'invocation': {u'module_args': {u'paths': [u'/etc/php/5.6/cli/conf.d'], u'file_type': u'file', u'age': None, u'contains': u'zend_extension(\\s+)?=(\\s+)?opcache\\.so', u'recurse': False, u'age_stamp': u'mtime', u'patterns': [u'*'], u'get_checksum': False, u'use_regex': False, u'follow': False, u'hidden': False, u'size': None}}, u'msg': u'', u'matched': 1}, {u'uid': 0, u'woth':
+
+ False, u'mtime': 1502412464.333635, u'inode': 2883626, u'isgid': False, u'size': 303, u'isuid': False, u'isreg': True, u'gid': 0, u'ischr': False, u'wusr': True, u'xoth': False, u'islnk': Fal
+
+se, u'nlink': 1, u'issock': False, u'rgrp': True, u'path': u'/etc/php/5.6/cli/conf.d/10-opcache.ini', u'xusr': False, u'atime': 1502412478.7176352, u'isdir': False, u'ctime': 1502412464.493635
+
+2, u'isblk': False, u'wgrp': False, u'xgrp': False, u'dev': 64512, u'roth': True, u'isfifo': False, u'mode': u'0644', u'rusr': True}))
+
+TASK [geerlingguy.php : Ensure OpCache config file is present.] ****************
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php : Remove OpCache config file if OpCache is disabled.] ****
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php : include] ***********************************************
+included: /vagrant/provisioning/roles/geerlingguy.php/tasks/configure-fpm.yml for Mastering-Drupal--8
+
+TASK [geerlingguy.php : Define php_fpm_daemon.] ********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_fpm_pool_conf_path.] ************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_fpm_pool_user.] *****************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Define php_fpm_pool_group.] ****************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Stat php_fpm_pool_conf_path] ***************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Ensure the default pool directory exists.] *************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Ensure the default pool exists.] ***********************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Configure php-fpm pool (if enabled).] ******************
+ok: [Mastering-Drupal--8] => (item={u'regexp': u'^user.?=.+$', u'line': u'user = www-data'})
+ok: [Mastering-Drupal--8] => (item={u'regexp': u'^group.?=.+$', u'line': u'group = www-data'})
+ok: [Mastering-Drupal--8] => (item={u'regexp': u'^listen.?=.+$', u'line': u'listen = 127.0.0.1:9000'})
+ok: [Mastering-Drupal--8] => (item={u'regexp': u'^listen\\.allowed_clients.?=.+$', u'line': u'listen.allowed_clients = 127.0.0.1'})
+ok: [Mastering-Drupal--8] => (item={u'regexp': u'^pm\\.max_children.?=.+$', u'line': u'pm.max_children = 50'})
+ok: [Mastering-Drupal--8] => (item={u'regexp': u'^pm\\.start_servers.?=.+$', u'line': u'pm.start_servers = 5'})
+ok: [Mastering-Drupal--8] => (item={u'regexp': u'^pm\\.min_spare_servers.?=.+$', u'line': u'pm.min_spare_servers = 5'})
+ok: [Mastering-Drupal--8] => (item={u'regexp': u'^pm\\.max_spare_servers.?=.+$', u'line': u'pm.max_spare_servers = 5'})
+
+TASK [geerlingguy.php : Ensure php-fpm is started and enabled at boot (if configured).] ***
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php : Ensure php-fpm is started and enabled at boot (if configured, Debian).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-pecl : Include OS-Specific variables.] *******************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-pecl : Ensure pecl is installed (if configured).] ********
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-pecl : Install PECL libaries.] ***************************
+
+TASK [geerlingguy.composer : Set php_executable variable to a default if not defined.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.composer : Check if Composer is installed.] ******************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.composer : Download Composer installer.] *********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.composer : Run Composer installer.] **************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.composer : Move Composer into globally-accessible location.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.composer : Update Composer to latest version (if configured).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.composer : Ensure composer directory exists.] ****************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.composer : Add GitHub OAuth token for Composer (if configured).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.composer : Install configured globally-required packages.] ***
+ok: [Mastering-Drupal--8] => (item={u'release': u'^0.3', u'name': u'hirak/prestissimo'})
+
+TASK [geerlingguy.composer : Add composer_home_path bin directory to global $PATH.] ***
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.composer : Add composer_project_path bin directory to global $PATH.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Include OS-specific variables.] **********************
+ok: [Mastering-Drupal--8] => (item=/vagrant/provisioning/roles/geerlingguy.mysql/vars/Debian.yml)
+
+TASK [geerlingguy.mysql : Include OS-specific variables (RedHat).] *************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Define mysql_packages.] ******************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Define mysql_daemon.] ********************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Define mysql_slow_query_log_file.] *******************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Define mysql_log_error.] *****************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Define mysql_syslog_tag.] ****************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Define mysql_pid_file.] ******************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Define mysql_config_file.] ***************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Define mysql_config_include_dir.] ********************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Define mysql_socket.] ********************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Define mysql_supports_innodb_large_prefix.] **********
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : include] *********************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : include] *********************************************
+included: /vagrant/provisioning/roles/geerlingguy.mysql/tasks/setup-Debian.yml for Mastering-Drupal--8
+
+TASK [geerlingguy.mysql : Check if MySQL is already installed.] ****************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Update apt cache if MySQL is not yet installed.] *****
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Ensure MySQL Python libraries are installed.] ********
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Ensure MySQL packages are installed.] ****************
+ok: [Mastering-Drupal--8] => (item=[u'mysql-common', u'mysql-server'])
+
+TASK [geerlingguy.mysql : Ensure MySQL is stopped after initial install.] ******
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Delete innodb log files created by apt package after initial install.] ***
+skipping: [Mastering-Drupal--8] => (item=ib_logfile0)
+skipping: [Mastering-Drupal--8] => (item=ib_logfile1)
+
+TASK [geerlingguy.mysql : include] *********************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Check if MySQL packages were installed.] *************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Copy my.cnf global MySQL configuration.] *************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Verify mysql include directory exists.] **************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Copy my.cnf override files into include directory.] ***
+
+TASK [geerlingguy.mysql : Create slow query log file (if configured).] *********
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Create datadir if it does not exist] *****************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Set ownership on slow query log file (if configured).] ***
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Create error log file (if configured).] **************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Set ownership on error log file (if configured).] ****
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Ensure MySQL is started and enabled on boot.] ********
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Get MySQL version.] **********************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Ensure default user is present.] *********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Copy user-my.cnf file with password credentials.] ****
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Disallow root login remotely] ************************
+ok: [Mastering-Drupal--8] => (item=DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1'))
+
+TASK [geerlingguy.mysql : Get list of hosts for the root user.] ****************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Update MySQL root password for localhost root account (5.7.x).] ***
+
+TASK [geerlingguy.mysql : Update MySQL root password for localhost root account (< 5.7.x).] ***
+
+TASK [geerlingguy.mysql : Copy .my.cnf file with root password credentials.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Get list of hosts for the anonymous user.] ***********
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Remove anonymous MySQL users.] ***********************
+
+TASK [geerlingguy.mysql : Remove MySQL test database.] *************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Ensure MySQL databases are present.] *****************
+ok: [Mastering-Drupal--8] => (item={u'collation': u'utf8mb4_general_ci', u'name': u'drupal', u'encoding': u'utf8mb4'})
+
+TASK [geerlingguy.mysql : Ensure MySQL users are present.] *********************
+ok: [Mastering-Drupal--8] => (item=(censored due to no_log))
+
+TASK [geerlingguy.mysql : Ensure replication user exists on master.] ***********
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Check slave replication status.] *********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Check master replication status.] ********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Configure replication on the slave.] *****************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mysql : Start replication.] **********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-mysql : Include OS-specific variables.] ******************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-mysql : Define php_mysql_package.] ***********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-mysql : Install PHP MySQL dependencies (RedHat).] ********
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-mysql : Install PHP MySQL dependencies (Debian).] ********
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.postgresql : include] ****************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.postgresql : include] ****************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.postgresql : include] ****************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.postgresql : Set PostgreSQL environment variables.] **********
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.postgresql : Ensure PostgreSQL data directory exists.] *******
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.postgresql : Check if PostgreSQL database is initialized.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.postgresql : Ensure PostgreSQL database is initialized.] *****
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.postgresql : Configure global settings.] *********************
+skipping: [Mastering-Drupal--8] => (item={u'option': u'unix_socket_directories', u'value': u'/var/run/postgresql'})
+
+TASK [geerlingguy.postgresql : Configure host based authentication (if entries are configured).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.postgresql : Ensure PostgreSQL unix socket dirs exist.] ******
+skipping: [Mastering-Drupal--8] => (item=/var/run/postgresql)
+
+TASK [geerlingguy.postgresql : Ensure PostgreSQL is started and enabled on boot.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.postgresql : Ensure PostgreSQL databases are present.] *******
+skipping: [Mastering-Drupal--8] => (item={u'name': u'drupal'})
+
+TASK [geerlingguy.postgresql : Ensure PostgreSQL users are present.] ***********
+skipping: [Mastering-Drupal--8] => (item=(censored due to no_log))
+
+TASK [geerlingguy.php-pgsql : Include OS-specific variables.] ******************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-pgsql : Define php_pgsql_package.] ***********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-pgsql : Install PHP PostgreSQL dependencies (RedHat).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-pgsql : Install PHP PostgreSQL dependencies (Debian).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drupal-console : Install Drupal Console.] ********************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drupal-console : Ensure Drupal Console is executable.] *******
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drupal-console : Update Drupal Console to latest version (if configured).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drush : Check current state.] ********************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drush : Perform cleanup of old symlink.] *********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drush : Install Drush.] **************************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drush : Ensure Drush is executable.] *************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drush : Clone Drush from GitHub.] ****************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drush : Check for composer.json] *****************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drush : Ensure Drush can be installed on Debian Wheezy.] *****
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drush : Install Drush dependencies with Composer.] ***********
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drush : Create drush symlink.] *******************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drush : Run drush to finish setting it up.] ******************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.memcached : Include OS-specific variables.] ******************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.memcached : Define memcached_user.] **************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.memcached : Update apt cache.] *******************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.memcached : Install Memcached.] ******************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.memcached : Copy Memcached configuration.] *******************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.memcached : Ensure Memcached is started and set to run on startup.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-memcached : Include OS-specific variables.] **************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-memcached : Define php_memcached_package.] ***************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-memcached : Install PHP Memcached extension (RedHat).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-memcached : Install PHP Memcached extension (Debian).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-tideways : Include OS-specific variables.] ***************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-tideways : Define php_tideways_module_path.] *************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-tideways : Define php_tideways_config_filename.] *********
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-tideways : Ensure dependencies for installing Tideways are present.] ***
+skipping: [Mastering-Drupal--8] => (item=make)
+skipping: [Mastering-Drupal--8] => (item=gcc)
+skipping: [Mastering-Drupal--8] => (item=unzip)
+
+TASK [geerlingguy.php-tideways : Download and untar Tideways.] *****************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-tideways : Build Tideways.] ******************************
+skipping: [Mastering-Drupal--8] => (item=phpize)
+skipping: [Mastering-Drupal--8] => (item=./configure)
+skipping: [Mastering-Drupal--8] => (item=make)
+skipping: [Mastering-Drupal--8] => (item=make install)
+
+TASK [geerlingguy.php-tideways : Ensure Tideways module path exists.] **********
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-tideways : Move Tideways module into place.] *************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-tideways : Ensure PHP configuration directories exist.] ***
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php-tideways : Copy Tideways INI into various other conf folders.] ***
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php-tideways : Define xhprof_download_url.] ******************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-tideways : Define xhprof_download_folder_name.] **********
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-tideways : Define php_xhprof_lib_dir.] *******************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-tideways : Define php_xhprof_html_dir.] ******************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-tideways : Ensure dependencies for the XHProf UI are present.] ***
+skipping: [Mastering-Drupal--8] => (item=graphviz)
+
+TASK [geerlingguy.php-tideways : Download and untar XHProf.] *******************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-tideways : Move XHProf PHP library into place.] **********
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-tideways : Move XHProf UI into place.] *******************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-tideways : Ensure PHP configuration directories exist.] ***
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php-tideways : Copy Tideways INI into various other conf folders.] ***
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php-xdebug : Include OS-specific variables.] *****************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-xdebug : Define php_xdebug_module_path.] *****************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-xdebug : Define php_xdebug_config_filename.] *************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-xdebug : Ensure dependencies for building from source are installed (RedHat).] ***
+skipping: [Mastering-Drupal--8] => (item=[])
+
+TASK [geerlingguy.php-xdebug : Ensure dependencies for building from source are installed (Debian).] ***
+ok: [Mastering-Drupal--8] => (item=[u'build-essential'])
+
+TASK [geerlingguy.php-xdebug : Untar Xdebug.] **********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-xdebug : Build Xdebug.] **********************************
+ok: [Mastering-Drupal--8] => (item=phpize)
+ok: [Mastering-Drupal--8] => (item=./configure)
+ok: [Mastering-Drupal--8] => (item=make)
+
+TASK [geerlingguy.php-xdebug : Ensure Xdebug module path exists.] **************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-xdebug : Move Xdebug module into place.] *****************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-xdebug : Copy xdebug ini into main extension config folder.] ***
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+ok: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php-xhprof : Include OS-specific variables.] *****************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-xhprof : Define php_xhprof_module_path.] *****************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-xhprof : Define php_xhprof_config_filename.] *************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-xhprof : Ensure dependencies for installing XHProf are present.] ***
+skipping: [Mastering-Drupal--8] => (item=make)
+skipping: [Mastering-Drupal--8] => (item=gcc)
+skipping: [Mastering-Drupal--8] => (item=unzip)
+skipping: [Mastering-Drupal--8] => (item=graphviz)
+
+TASK [geerlingguy.php-xhprof : Download and untar XHProf.] *********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-xhprof : Build XHProf.] **********************************
+skipping: [Mastering-Drupal--8] => (item=phpize)
+skipping: [Mastering-Drupal--8] => (item=./configure)
+skipping: [Mastering-Drupal--8] => (item=make)
+
+TASK [geerlingguy.php-xhprof : Ensure XHProf module path exists.] **************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-xhprof : Move XHProf module into place.] *****************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-xhprof : Move XHProf PHP library into place.] ************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-xhprof : Move XHProf UI into place.] *********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-xhprof : Ensure PHP configuration directories exist.] ****
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php-xhprof : Copy XHProf INI into various other conf folders.] ***
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.php-xhprof : Ensure XHProf output directory exists.] *********
+skipping: [Mastering-Drupal--8]
+
+TASK [thom8.php-upload-progress : Include OS-specific variables.] **************
+skipping: [Mastering-Drupal--8]
+
+TASK [thom8.php-upload-progress : Define php_uploadprogress_module_path.] ******
+skipping: [Mastering-Drupal--8]
+
+TASK [thom8.php-upload-progress : Define php_uploadprogress_config_filename.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [thom8.php-upload-progress : Download and untar uploadprogress.] **********
+skipping: [Mastering-Drupal--8]
+
+TASK [thom8.php-upload-progress : Build uploadprogress.] ***********************
+skipping: [Mastering-Drupal--8] => (item=phpize)
+skipping: [Mastering-Drupal--8] => (item=./configure)
+skipping: [Mastering-Drupal--8] => (item=make)
+
+TASK [thom8.php-upload-progress : Ensure uploadprogress module path exists.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [thom8.php-upload-progress : Move uploadprogress module into place.] ******
+skipping: [Mastering-Drupal--8]
+
+TASK [thom8.php-upload-progress : Add php extension config for uploadprogress.] ***
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/fpm/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/apache2/conf.d)
+skipping: [Mastering-Drupal--8] => (item=/etc/php/5.6/cli/conf.d)
+
+TASK [geerlingguy.blackfire : Add packagecloud GPG key.] ***********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.blackfire : Add Blackfire repository.] ***********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.blackfire : Disable gpg_repocheck for non-bleeding-edge CentOS.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.blackfire : Add packagecloud apt key.] ***********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.blackfire : Add packagecloud repository.] ********************
+skipping: [Mastering-Drupal--8] => (item=deb http://packages.blackfire.io/debian any main)
+
+TASK [geerlingguy.blackfire : Update apt caches after repo is added.] **********
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.blackfire : Ensure Blackfire packages are installed.] ********
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.adminer : Ensure Adminer directory exists.] ******************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.adminer : Download Adminer to configured directory.] *********
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.adminer : Symlink Adminer into configured directories.] ******
+
+TASK [geerlingguy.adminer : Set the proper Apache configuration directory (Debian).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.adminer : Add Apache configuration file for Adminer (Debian).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.adminer : Add Apache configuration file for Adminer (RedHat).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.pimpmylog : Clone Pimp my Log.] ******************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.pimpmylog : Grant all privileges on the Pimp my Log directory.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.daemonize : Download daemonize archive.] *********************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.daemonize : Expand daemonize archive.] ***********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.daemonize : Check if daemonize is installed.] ****************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.daemonize : Build daemonize.] ********************************
+skipping: [Mastering-Drupal--8] => (item=./configure --prefix=/usr)
+skipping: [Mastering-Drupal--8] => (item=make)
+skipping: [Mastering-Drupal--8] => (item=make install)
+
+TASK [geerlingguy.daemonize : Download daemonize archive.] *********************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.daemonize : Expand daemonize archive.] ***********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.daemonize : Check if daemonize is installed.] ****************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.daemonize : Build daemonize.] ********************************
+skipping: [Mastering-Drupal--8] => (item=./configure --prefix=/usr)
+skipping: [Mastering-Drupal--8] => (item=make)
+skipping: [Mastering-Drupal--8] => (item=make install)
+
+TASK [geerlingguy.mailhog : Ensure mailhog install directory exists.] **********
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mailhog : Download MailHog and mhsendmail binaries.] *********
+ok: [Mastering-Drupal--8] => (item={u'url': u'https://github.com/mailhog/MailHog/releases/download/v0.2.1/MailHog_linux_amd64', u'dest': u'/opt/mailhog/mailhog'})
+ok: [Mastering-Drupal--8] => (item={u'url': u'https://github.com/mailhog/mhsendmail/releases/download/v0.2.0/mhsendmail_linux_amd64', u'dest': u'/opt/mailhog/mhsendmail
+
+'})
+
+TASK [geerlingguy.mailhog : Copy mailhog init script into place.] **************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mailhog : Copy mailhog systemd unit file into place (for systemd systems).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.mailhog : Ensure mailhog is enabled and will start on boot.] ***
+ok: [Mastering-Drupal--8]
+
+TASK [franklinkim.newrelic : Checking for key] *********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [franklinkim.newrelic : Installing dependencies] **************************
+skipping: [Mastering-Drupal--8]
+
+TASK [franklinkim.newrelic : Adding APT key] ***********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [franklinkim.newrelic : Add APT repository] *******************************
+skipping: [Mastering-Drupal--8]
+
+TASK [franklinkim.newrelic : Installing packages] ******************************
+skipping: [Mastering-Drupal--8] => (item=[])
+
+TASK [franklinkim.newrelic : Installing dependencies] **************************
+skipping: [Mastering-Drupal--8]
+
+TASK [franklinkim.newrelic : Installing packages] ******************************
+skipping: [Mastering-Drupal--8] => (item=[])
+
+TASK [franklinkim.newrelic : Configuring module] *******************************
+skipping: [Mastering-Drupal--8] => (item=etc/newrelic/nrsysmond.cfg)
+
+TASK [franklinkim.newrelic : Configuring user groups] **************************
+skipping: [Mastering-Drupal--8]
+
+TASK [franklinkim.newrelic : Configuring service] ******************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nodejs : Set up the Nodesource RPM directory for Node.js > 0.10.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nodejs : Set up the Nodesource RPM variable for Node.js == 0.10.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nodejs : Import Nodesource RPM key (CentOS < 7).] ************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nodejs : Import Nodesource RPM key (CentOS 7+)..] ************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nodejs : Add Nodesource repositories for Node.js (CentOS < 7).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nodejs : Add Nodesource repositories for Node.js (CentOS 7+).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nodejs : Ensure Node.js and npm are installed.] **************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nodejs : Ensure apt-transport-https is installed.] ***********
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nodejs : Add Nodesource apt key.] ****************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nodejs : Add NodeSource repositories for Node.js.] ***********
+ok: [Mastering-Drupal--8] => (item=deb https://deb.nodesource.com/node_4.x trusty main)
+ok: [Mastering-Drupal--8] => (item=deb-src https://deb.nodesource.com/node_4.x trusty main)
+
+TASK [geerlingguy.nodejs : Update apt cache if repo was added.] ****************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nodejs : Ensure Node.js and npm are installed.] **************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nodejs : Define nodejs_install_npm_user] *********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nodejs : Create npm global directory] ************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nodejs : Add npm_config_prefix bin directory to global $PATH.] ***
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nodejs : Ensure npm global packages are installed.] **********
+ok: [Mastering-Drupal--8] => (item={u'name': u'bower'})
+ok: [Mastering-Drupal--8] => (item={u'name': u'gulp-cli'})
+
+TASK [geerlingguy.nodejs : Install packages defined in a given package.json.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.redis : Include OS-specific variables.] **********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.redis : Define redis_package.] *******************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.redis : Ensure Redis is installed.] **************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.redis : Ensure Redis is installed.] **************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.redis : Ensure Redis is installed.] **************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.redis : Ensure Redis is configured.] *************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.redis : Ensure Redis is running and enabled on boot.] ********
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-redis : Include OS-specific variables.] ******************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-redis : Define php_redis_package.] ***********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-redis : Install PhpRedis extension (RedHat).] ************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-redis : Install PhpRedis extension (Debian).] ************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-redis : Clone the PhpRedis repo.] ************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-redis : Run phpize.] *************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-redis : Run configure script.] ***************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.php-redis : Make and install PHP.] ***************************
+skipping: [Mastering-Drupal--8] => (item=make)
+skipping: [Mastering-Drupal--8] => (item=make install)
+
+TASK [geerlingguy.php-redis : Ensure the Redis extension is present in PHP's configuration.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.ruby : Install ruby and rubygems.] ***************************
+skipping: [Mastering-Drupal--8] => (item=[])
+
+TASK [geerlingguy.ruby : Update apt cache.] ************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.ruby : Set rubygems package name for Ubuntu 14.04.] **********
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.ruby : Install ruby and rubygems.] ***************************
+skipping: [Mastering-Drupal--8] => (item=[])
+
+TASK [geerlingguy.ruby : Install packages required to build ruby (RedHat).] ****
+skipping: [Mastering-Drupal--8] => (item=[])
+
+TASK [geerlingguy.ruby : Update apt cache (Debian).] ***************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.ruby : Install packages required to build ruby (Debian).] ****
+skipping: [Mastering-Drupal--8] => (item=[])
+
+TASK [geerlingguy.ruby : Download ruby.] ***************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.ruby : Extract ruby.] ****************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.ruby : Build ruby.] ******************************************
+skipping: [Mastering-Drupal--8] => (item=./configure --enable-shared)
+skipping: [Mastering-Drupal--8] => (item=make)
+skipping: [Mastering-Drupal--8] => (item=make install)
+
+TASK [geerlingguy.ruby : Add ruby symlinks.] ***********************************
+skipping: [Mastering-Drupal--8] => (item=erb)
+skipping: [Mastering-Drupal--8] => (item=gem)
+skipping: [Mastering-Drupal--8] => (item=irb)
+skipping: [Mastering-Drupal--8] => (item=rake)
+skipping: [Mastering-Drupal--8] => (item=rdoc)
+skipping: [Mastering-Drupal--8] => (item=ruby)
+
+TASK [geerlingguy.ruby : Add user installed RubyGems bin directory to global $PATH.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.ruby : Install Bundler.] *************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.ruby : Install configured gems.] *****************************
+
+TASK [geerlingguy.java : Include OS-specific variables.] ***********************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.java : Include OS-specific variables for Fedora.] ************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.java : Include version-specific variables for Ubuntu.] *******
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.java : Define java_packages.] ********************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.java : include] **********************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.java : include] **********************************************
+included: /vagrant/provisioning/roles/geerlingguy.java/tasks/setup-Debian.yml for Mastering-Drupal--8
+
+TASK [geerlingguy.java : Ensure Java is installed.] ****************************
+ok: [Mastering-Drupal--8] => (item=[u'openjdk-7-jdk'])
+
+TASK [geerlingguy.java : include] **********************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.java : Set JAVA_HOME if configured.] *************************
+skipping: [Mastering-Drupal--8]
+
+TASK [arknoll.selenium : Include OS-Specific variables] ************************
+ok: [Mastering-Drupal--8]
+
+TASK [arknoll.selenium : Install dependencies] *********************************
+ok: [Mastering-Drupal--8]
+
+TASK [arknoll.selenium : create directory] *************************************
+ok: [Mastering-Drupal--8]
+
+TASK [arknoll.selenium : Download Selenium] ************************************
+ok: [Mastering-Drupal--8]
+
+TASK [arknoll.selenium : Install FireFox (if configured)] **********************
+skipping: [Mastering-Drupal--8]
+
+TASK [arknoll.selenium : Add Chrome key (if configured, Debian)] ***************
+ok: [Mastering-Drupal--8]
+
+TASK [arknoll.selenium : Add Chrome repo (if configured, Debian)] **************
+ok: [Mastering-Drupal--8]
+
+TASK [arknoll.selenium : Install Chrome (if configured, Debian)] ***************
+ok: [Mastering-Drupal--8]
+
+TASK [arknoll.selenium : Install Chrome (if configured, RedHat)] ***************
+skipping: [Mastering-Drupal--8]
+
+TASK [arknoll.selenium : Get the latest release for chromedriver] **************
+ok: [Mastering-Drupal--8]
+
+TASK [arknoll.selenium : Install chromedriver] *********************************
+ok: [Mastering-Drupal--8]
+
+TASK [arknoll.selenium : Install xvfb] *****************************************
+ok: [Mastering-Drupal--8]
+
+TASK [arknoll.selenium : Install init script] **********************************
+ok: [Mastering-Drupal--8]
+
+TASK [arknoll.selenium : Install systemd unit file (for systemd systems)] ******
+skipping: [Mastering-Drupal--8]
+
+TASK [arknoll.selenium : Register systemd service status (for systemd systems)] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [arknoll.selenium : Ensure selenium is running] ***************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Ensure solr_user group exists.] ***********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Ensure solr_user exists.] *****************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Set solr_filename for Solr 4+.] ***********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Set solr_filename for Solr 3.x.] **********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Check if Solr has been installed already.] ************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Download Solr.] ***************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Expand Solr.] *****************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Check if Solr is already installed.] ******************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Copy Solr into place.] ********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Ensure Solr install files are owned by the solr_user.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Check if solr_home is already set up.] ****************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Ensure solr_home directory exists.] *******************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Copy Solr example into solr_home.] ********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Fix the example solrconfig.xml file.] *****************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Ensure Solr home files are owned by the solr_user.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Ensure log file is created and has proper permissions.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Copy solr init script into place.] ********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Ensure daemon is installed (Debian).] *****************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Copy solr systemd unit file into place (for systemd systems).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Ensure lsof is present (RedHat).] *********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Ensure setfacl support is present.] *******************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Run Solr installation script.] ************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Ensure solr is stopped (RHEL 7 workaround).] **********
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Run systemd daemon_reload (RHEL 7 workaround).] *******
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Ensure solr is started and enabled on boot.] **********
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Remove existing SOLR_HEAP configuration.] *************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Apply Solr configuration changes.] ********************
+skipping: [Mastering-Drupal--8] => (item={u'regexp': u'^.?SOLR_JAVA_MEM=', u'line': u'SOLR_JAVA_MEM="-Xms64M -Xmx128M"'})
+skipping: [Mastering-Drupal--8] => (item={u'regexp': u'^SOLR_PORT=', u'line': u'SOLR_PORT="8983"'})
+skipping: [Mastering-Drupal--8] => (item={u'regexp': u'^.?SOLR_TIMEZONE=', u'line': u'SOLR_TIMEZONE="UTC"'})
+
+TASK [geerlingguy.solr : Check current list of Solr cores.] ********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.solr : Ensure Solr conf directories exist.] ******************
+skipping: [Mastering-Drupal--8] => (item=collection1)
+
+TASK [geerlingguy.solr : Ensure core configuration directories exist.] *********
+skipping: [Mastering-Drupal--8] => (item=collection1)
+
+TASK [geerlingguy.solr : Create configured cores.] *****************************
+skipping: [Mastering-Drupal--8] => (item=collection1)
+
+TASK [geerlingguy.solr : include] **********************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.java : Include OS-specific variables.] ***********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.java : Include OS-specific variables for Fedora.] ************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.java : Include version-specific variables for Ubuntu.] *******
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.java : Define java_packages.] ********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.java : include] **********************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.java : include] **********************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.java : include] **********************************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.java : Set JAVA_HOME if configured.] *************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.elasticsearch : Add Elasticsearch GPG key.] ******************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.elasticsearch : Add Elasticsearch repository.] ***************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.elasticsearch : Install Elasticsearch.] **********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.elasticsearch : Add Elasticsearch apt key.] ******************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.elasticsearch : Add Elasticsearch repository.] ***************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.elasticsearch : Install Elasticsearch.] **********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.elasticsearch : Configure Elasticsearch.] ********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.elasticsearch : Start Elasticsearch.] ************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.elasticsearch : Make sure Elasticsearch is running before proceeding.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.varnish : Include OS-specific variables.] ********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.varnish : Set the packagecloud repository name based on the version.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.varnish : Ensure Varnish dependencies are installed.] ********
+skipping: [Mastering-Drupal--8] => (item=[])
+
+TASK [geerlingguy.varnish : Add Varnish packagecloud.io yum repo.] *************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.varnish : Refresh yum metadata cache if repo changed.] *******
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.varnish : Ensure Varnish is installed.] **********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.varnish : Ensure APT HTTPS Transport is installed.] **********
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.varnish : Add packagecloud.io Varnish apt key.] **************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.varnish : Add packagecloud.io Varnish apt repository.] *******
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.varnish : Ensure Varnish is installed.] **********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.varnish : Ensure Varnish config path exists.] ****************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.varnish : Copy Varnish configuration (sysvinit).] ************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.varnish : Copy Debian Jessie/Xenial specific Varnish configs (systemd).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.varnish : Copy Varnish configuration (systemd).] *************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.varnish : Copy Varnish default VCL.] *************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.varnish : Copy varnish secret.] ******************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.varnish : Ensure Varnish services are started and enabled on startup.] ***
+skipping: [Mastering-Drupal--8] => (item=varnish)
+
+TASK [geerlingguy.varnish : Ensure Varnish services are started enabled on startup (Xenial specific)] ***
+skipping: [Mastering-Drupal--8] => (item=varnish)
+
+TASK [geerlingguy.nginx : Include OS-specific variables.] **********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Define nginx_user.] **********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Enable nginx repo.] **********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Ensure nginx is installed.] **************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Add PPA for Nginx.] **********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Ensure nginx will reinstall if the PPA was just added.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Update apt cache.] ***********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Ensure nginx is installed.] **************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Update pkg cache.] ***********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Ensure nginx is installed.] **************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Create logs directory.] ******************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Ensure nginx is installed.] **************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Create logs directory.] ******************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Ensure nginx is installed.] **************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Remove default nginx vhost config file (if configured).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Ensure nginx_vhost_path exists.] *********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Add managed vhost config files.] *********************
+skipping: [Mastering-Drupal--8] => (item={u'is_php': True, u'root': u'/var/www/Mastering-Drupal--8/docroot', u'server_name': u'local.Mastering-Drupal--8.com www.local.M
+
+astering-Drupal--8.com'})
+skipping: [Mastering-Drupal--8] => (item={u'is_php': True, u'root': u'/opt/adminer', u'server_name': u'adminer.local.Mastering-Drupal--8.com'})
+skipping: [Mastering-Drupal--8] => (item={u'is_php': True, u'root': u'/usr/share/php/xhprof_html', u'server_name': u'xhprof.local.Mastering-Drupal--8.com'})
+skipping: [Mastering-Drupal--8] => (item={u'is_php': True, u'root': u'/usr/share/php/pimpmylog', u'server_name': u'pimpmylog.local.Mastering-Drupal--8.com'})
+skipping: [Mastering-Drupal--8] => (item={u'is_php': True, u'root': u'/var/www/dashboard', u'server_name': u'192.168.88.25 dashboard.local.Mastering-Drupal--8.com'})
+
+TASK [geerlingguy.nginx : Remove managed vhost config files.] ******************
+skipping: [Mastering-Drupal--8] => (item={u'is_php': True, u'root': u'/var/www/Mastering-Drupal--8/docroot', u'server_name': u'local.Mastering-Drupal--8.com www.local.M
+
+astering-Drupal--8.com'})
+skipping: [Mastering-Drupal--8] => (item={u'is_php': True, u'root': u'/opt/adminer', u'server_name': u'adminer.local.Mastering-Drupal--8.com'})
+skipping: [Mastering-Drupal--8] => (item={u'is_php': True, u'root': u'/usr/share/php/xhprof_html', u'server_name': u'xhprof.local.Mastering-Drupal--8.com'})
+skipping: [Mastering-Drupal--8] => (item={u'is_php': True, u'root': u'/usr/share/php/pimpmylog', u'server_name': u'pimpmylog.local.Mastering-Drupal--8.com'})
+skipping: [Mastering-Drupal--8] => (item={u'is_php': True, u'root': u'/var/www/dashboard', u'server_name': u'192.168.88.25 dashboard.local.Mastering-Drupal--8.com'})
+
+TASK [geerlingguy.nginx : Remove legacy vhosts.conf file.] *********************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Copy nginx configuration in place.] ******************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.nginx : Ensure nginx is started and enabled to start at boot.] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [drupalvm.www : Define drupalvm_webserver_user (Debian).] *****************
+ok: [Mastering-Drupal--8]
+
+TASK [drupalvm.www : Define drupalvm_webserver_user (RedHat).] *****************
+skipping: [Mastering-Drupal--8]
+
+TASK [drupalvm.www : Register information about the /vagrant directory.] *******
+ok: [Mastering-Drupal--8]
+
+TASK [drupalvm.www : Ensure a group with the same GID as used to sync directories exist (Ansible 2.3+).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [drupalvm.www : Ensure the webserver user is in the same group as the owner of synced directories (Ansible 2.3+).] ***
+ok: [Mastering-Drupal--8]
+
+TASK [drupalvm.www : Detect if group used to sync directories already exist (Ansible 2.2).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [drupalvm.www : Ensure a group with the same GID as used to sync directories exist (Ansible 2.2).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [drupalvm.www : Ensure the webserver user is in the same group as the owner of synced directories (Ansible 2.2).] ***
+skipping: [Mastering-Drupal--8]
+
+TASK [drupalvm.www : Ensure admin group exist.] ********************************
+ok: [Mastering-Drupal--8]
+
+TASK [drupalvm.www : Ensure vagrant user is in admin group.] *******************
+ok: [Mastering-Drupal--8]
+
+TASK [drupalvm.www : Set nicer permissions on Apache log directory.] ***********
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drupal : Add backwards-compatibility shims.] *****************
+included: /vagrant/provisioning/roles/geerlingguy.drupal/tasks/backwards-compatibility.yml for Mastering-Drupal--8
+
+TASK [geerlingguy.drupal : build_makefile shim] ********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drupal : build_composer shim] ********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drupal : build_composer_project shim] ************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drupal : install_site shim] **********************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drupal : drupalvm_database shim] *****************************
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drupal : Check if Drupal is already set up.] *****************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drupal : Define drush_path if it's not already defined.] *****
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drupal : Define drupal_site_exists.] *************************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drupal : Ensure drupal_deploy_dir directory exists.] *********
+skipping: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drupal : Check out Drupal to the docroot.] *******************
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drupal : Check if a composer.json file is present.] **********
+ok: [Mastering-Drupal--8]
+
+TASK [geerlingguy.drupal : Run composer install if composer.json is present.] ***
+fatal: [Mastering-Drupal--8]: FAILED! => {"changed": false, "failed": true, "msg": "> DrupalProject\\composer\\ScriptHandler::checkComposerVersion Loading composer repo
+
+sitories with package information Installing dependencies from lock file Your requirements could not be resolved to an installable set of packages. Problem 1 - Installa
+
+tion request for doctrine/cache v1.7.0 -> satisfiable by doctrine/cache[v1.7.0]. - doctrine/cache v1.7.0 requires php ~7.1 -> your PHP version (5.6.31) does not satisfy
+
+ that requirement. Problem 2 - Installation request for doctrine/collections v1.5.0 -> satisfiable by doctrine/collections[v1.5.0]. - doctrine/collections v1.5.0 requir
+
+es php ^7.1 -> your PHP version (5.6.31) does not satisfy that requirement. Problem 3 - Installation request for doctrine/common v2.8.0 -> satisfiable by doctrine/commo
+
+n[v2.8.0]. - doctrine/common v2.8.0 requires php ~7.1 -> your PHP version (5.6.31) does not satisfy that requirement. Problem 4 - Installation request for doctrine/infl
+
+ector v1.2.0 -> satisfiable by doctrine/inflector[v1.2.0]. - doctrine/inflector v1.2.0 requires php ^7.0 -> your PHP version (5.6.31) does not satisfy that requirement.
+
+ Problem 5 - doctrine/collections v1.5.0 requires php ^7.1 -> your PHP version (5.6.31) does not satisfy that requirement. - drupal/console 1.0.0-rc26 requires doctrine
+
+/collections ^1.3 -> satisfiable by doctrine/collections[v1.5.0]. - Installation request for drupal/console 1.0.0-rc26 -> satisfiable by drupal/console[1.0.0-rc26].", "
+
+stdout": "> DrupalProject\\composer\\ScriptHandler::checkComposerVersion\nLoading composer repositories with package information\nInstalling dependencies from lock file
+
+\nYour requirements could not be resolved to an installable set of packages.\n\n  Problem 1\n    - Installation request for doctrine/cache v1.7.0 -> satisfiable by doct
+
+rine/cache[v1.7.0].\n    - doctrine/cache v1.7.0 requires php ~7.1 -> your PHP version (5.6.31) does not satisfy that requirement.\n  Problem 2\n    - Installation requ
+
+est for doctrine/collections v1.5.0 -> satisfiable by doctrine/collections[v1.5.0].\n    - doctrine/collections v1.5.0 requires php ^7.1 -> your PHP version (5.6.31) do
+
+es not satisfy that requirement.\n  Problem 3\n    - Installation request for doctrine/common v2.8.0 -> satisfiable by doctrine/common[v2.8.0].\n    - doctrine/common v
+
+2.8.0 requires php ~7.1 -> your PHP version (5.6.31) does not satisfy that requirement.\n  Problem 4\n    - Installation request for doctrine/inflector v1.2.0 -> satisf
+
+iable by doctrine/inflector[v1.2.0].\n    - doctrine/inflector v1.2.0 requires php ^7.0 -> your PHP version (5.6.31) does not satisfy that requirement.\n  Problem 5\n
+  - doctrine/collections v1.5.0 requires php ^7.1 -> your PHP version (5.6.31) does not satisfy that requirement.\n    - drupal/console 1.0.0-rc26 requires doctrine/col
+
+lections ^1.3 -> satisfiable by doctrine/collections[v1.5.0].\n    - Installation request for drupal/console 1.0.0-rc26 -> satisfiable by drupal/console[1.0.0-rc26].\n\
+
+n", "stdout_lines": ["> DrupalProject\\composer\\ScriptHandler::checkComposerVersion", "Loading composer repositories with package information", "Installing dependencie
+
+s from lock file", "Your requirements could not be resolved to an installable set of packages.", "", "  Problem 1", "    - Installation request for doctrine/cache v1.7.
+
+0 -> satisfiable by doctrine/cache[v1.7.0].", "    - doctrine/cache v1.7.0 requires php ~7.1 -> your PHP version (5.6.31) does not satisfy that requirement.", "  Proble
+
+m 2", "    - Installation request for doctrine/collections v1.5.0 -> satisfiable by doctrine/collections[v1.5.0].", "    - doctrine/collections v1.5.0 requires php ^7.1
+
+ -> your PHP version (5.6.31) does not satisfy that requirement.", "  Problem 3", "    - Installation request for doctrine/common v2.8.0 -> satisfiable by doctrine/comm
+
+on[v2.8.0].", "    - doctrine/common v2.8.0 requires php ~7.1 -> your PHP version (5.6.31) does not satisfy that requirement.", "  Problem 4", "    - Installation reque
+
+st for doctrine/inflector v1.2.0 -> satisfiable by doctrine/inflector[v1.2.0].", "    - doctrine/inflector v1.2.0 requires php ^7.0 -> your PHP version (5.6.31) does no
+
+t satisfy that requirement.", "  Problem 5", "    - doctrine/collections v1.5.0 requires php ^7.1 -> your PHP version (5.6.31) does not satisfy that requirement.", "
+ - drupal/console 1.0.0-rc26 requires doctrine/collections ^1.3 -> satisfiable by doctrine/collections[v1.5.0].", "    - Installation request for drupal/console 1.0.0-r
+
+c26 -> satisfiable by drupal/console[1.0.0-rc26].", ""]}
+
+RUNNING HANDLER [geerlingguy.php : restart webserver] **************************
+
+RUNNING HANDLER [geerlingguy.php : restart php-fpm] ****************************
+        to retry, use: --limit @/vagrant/provisioning/playbook.retry
+
+PLAY RECAP *********************************************************************
+Mastering-Drupal--8        : ok=199  changed=9    unreachable=0    failed=1
+
+Ansible failed to complete successfully. Any error output should be
+visible above. Please fix these errors and try again.
